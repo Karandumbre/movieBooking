@@ -1,0 +1,49 @@
+<section class="mt-4 headerSection">
+  <div class="col-md-6 mb-3">
+    <form [formGroup]="movieForm">
+      <label for="Movie">Please Select A Movie</label>
+      <select class="form-control form-control-lg" name="category" id="Movie" (change)="ChangeMovieDetails()" required
+        class="form-control" formControlName="selectedMovie">
+        <option value="">Select...</option>
+        <option *ngFor="let item of movies">{{item.Title}}</option>
+      </select>
+    </form>
+  </div>
+  <button *ngIf="currentMovieDetails" class="btn btn-primary mb-2 ml-2" [routerLink]="['bookingscreen']"
+    [queryParams]="{ movie: currentMovieDetails.Title }">Book Now</button>
+
+</section>
+<section class="detailsSection">
+  <div *ngIf="currentMovieDetails">
+    <h6>Movie Title: {{currentMovieDetails.Title}}</h6>
+    <p>Actors: {{currentMovieDetails.Actors}}</p>
+    <p>Country: {{currentMovieDetails.Country}}</p>
+    <p>Director: {{currentMovieDetails.Director}}</p>
+  </div>
+</section>
+
+<section class="carouselSection">
+  <div class="carousel" *ngIf="showMovieCard">
+    <div id="demo" class="carousel slide" data-ride="carousel">
+      <ul class="carousel-indicators common">
+        <li data-target=" #demo" *ngFor="let x of currentMovieDetails.Images;let i = index" [attr.data-slide-to]="i"
+          ngClass="i == 0 ? 'active' : ''">
+        </li>
+      </ul>
+      <div class="carousel-inner common">
+        <div class="carousel-item" *ngFor="let j of currentMovieDetails.Images; let k = index"
+          [ngClass]="k == 0 ? 'item active' : 'item'">
+          <img src="{{j}}" class="img-fluid" alt="{{currentMovieDetails.Title}}">
+        </div>
+
+      </div>
+      <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
+    </div>
+
+  </div>
+</section>

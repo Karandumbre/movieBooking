@@ -1,0 +1,7 @@
+<div>
+  <button type="submit" style="position: relative;left: 70%;margin-top: 10px" *ngIf="encryptionService.isLoggedIn()"
+    (click)="logout()" class="btn btn-primary">LogOut</button>
+</div>
+<div class="mt-4">
+  <router-outlet></router-outlet>
+</div>

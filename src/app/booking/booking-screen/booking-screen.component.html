@@ -1,0 +1,65 @@
+<section class="text-justify text-center">
+  <label for="movieSelect">Select Movie Tickets</label>
+  <select id="movieSelect" [(ngModel)]="tickets">
+    <option [value]="i + 1" *ngFor="let item of [].constructor(10);let i = index">{{i + 1}}</option>
+  </select>
+</section>
+
+<section class="text-justify text-center seatSection">
+  <ol>
+    <li class="row" [class]="'row--'+(i+1)" *ngFor="let seat of seats; let i = index">
+      <ol class="seats" type="A">
+        <li class="seat" *ngFor="let seatNumber of seat; let j = index"
+          [ngClass]="{ Booked : seatNumber.status === 'Booked'}">
+          <input type="checkbox" [id]="seatNumber.value" (change)="ticketArray($event,seatNumber.value,i,j)"
+            [checked]="seatNumber.isSelected" />
+          <label for="{{seatNumber.value}}">{{seatNumber.value}}</label>
+        </li>
+      </ol>
+    </li>
+  </ol>
+
+  <button class="btn btn-secondary" *ngIf="checkLength()" data-toggle="modal" data-target="#ticketModal">Confirm
+    Booking</button>
+</section>
+
+
+<div class="modal" id="ticketModal" *ngIf="checkLength()">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">{{modaltitle}}</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <h6>
+          Movie: {{currentMovieDetails.Title}}
+        </h6>
+        <div>
+          Movie Tickets:
+          <div style="display: flex">
+            <div class="commercial-ticket ml-1" *ngFor="let item of purchasedTicket">{{item.seatNumber}}
+            </div>
+          </div>
+        </div>
+
+        <div>Per Ticket Price: 250 ₹</div>
+        <div>Amount: {{250 * purchasedTicket.length}} ₹</div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" (click)="bookTickets()"
+          *ngIf="modaltitle === 'Booking Details'">Confirm
+          Booking</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" [routerLink]="['/bookingService']"
+          (click)="closeModal()">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>

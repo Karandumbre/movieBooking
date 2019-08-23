@@ -1,0 +1,31 @@
+.my-form {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.my-form .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.login-form {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.login-form .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+app-field-error-display {
+  position: relative;
+  left: 35%;
+}
+
+@media only screen and (max-width: 500px) {
+  app-field-error-display {
+    position: relative;
+    left: 5%;
+  }
+}

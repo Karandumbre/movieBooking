@@ -1,0 +1,36 @@
+.my-form {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.my-form .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.login-form {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.login-form .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.alert-danger {
+  color: red;
+  background: none;
+  border: none;
+  position: relative;
+  left: 33%;
+  width: 70%
+}
+
+
+@media only screen and (max-width: 500px) {
+  .alert-danger {
+    position: relative;
+    left: 0%;
+  }
+}

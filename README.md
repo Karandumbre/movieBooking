@@ -1,3 +1,20 @@
+# Login Information
+
+No database is connected at this time, so only single user can login to the system.
+
+User must register to the system by clicking the register button.
+
+He must enter Name, Email, Password
+
+Then after that user must login with the provided credentials to enter the system
+
+# Booking Page
+
+All the details for only one movie. 
+
+If user selects another movie, all the details of previous movie booking will be overwritten
+
+
 # BookingApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.4.

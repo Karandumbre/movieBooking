@@ -1,0 +1,134 @@
+.seats {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+}
+
+.seat {
+  display: flex;
+  flex: 0 0 5%;
+  padding: 0;
+  position: relative;
+
+  &:nth-child(3) {
+    margin-right: 5%;
+  }
+
+  &:nth-child(7) {
+    margin-right: 5%;
+  }
+
+  input[type=checkbox] {
+    position: absolute;
+    opacity: 0;
+  }
+
+  input[type=checkbox]:checked {
+    +label {
+      background: #bada55;
+    }
+  }
+
+  input[type=checkbox]:disabled {
+    +label {
+      background: #dddddd;
+      text-indent: -9999px;
+      overflow: hidden;
+
+      &:after {
+        content: "X";
+        text-indent: 0;
+        position: absolute;
+        top: 4px;
+        left: 50%;
+        transform: translate(-50%, 0%);
+      }
+
+      &:hover {
+        box-shadow: none;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  label {
+    display: block;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.5rem;
+    padding: 4px 0;
+    background: white;
+    border-radius: 5px;
+
+    border: black;
+
+    &:before {
+      content: "";
+      position: absolute;
+      width: 75%;
+      height: 75%;
+      top: 1px;
+      left: 50%;
+      transform: translate(-50%, 0%);
+      background: rgba(255, 255, 255, .4);
+      border-radius: 3px;
+    }
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 0 0px 2px #5C6AFF;
+    }
+
+  }
+}
+
+ol {
+  list-style: none;
+}
+
+.Booked {
+  input[type=checkbox]:checked {
+    +label {
+      background: red !important;
+      pointer-events: none !important;
+      cursor: default !important;
+      text-decoration: none !important;
+      color: black !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  ol {
+    padding: 0;
+
+    .seats {
+      padding: 0
+    }
+
+    .seat {
+      flex: 0 0 8%
+    }
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .seat[_ngcontent-c1] {
+    flex: 1 0 5%;
+  }
+}
+
+
+.commercial-ticket {
+  text-align: center;
+  width: 10%;
+  background-color: #edede7;
+  background-image: radial-gradient(circle at center, white 3px, transparent 4px), radial-gradient(circle at center, white 3px, transparent 4px);
+  background-size: 14px 12px;
+  background-position: center -6px, center calc(100% + 6px);
+  background-repeat: repeat-x;
+}
